@@ -1,0 +1,31 @@
+keymap C-f NULL
+keymap C-b NULL
+keymap H NULL
+keymap g NULL
+keymap G NULL
+keymap ^ NULL
+keymap $ NULL
+keymap H NULL
+keymap L NULL
+keymap w NULL
+keymap b NULL
+keymap / NULL
+keymap n NULL
+keymap N NULL
+keymap o NULL
+
+keymap C-f NEXT_PAGE
+keymap C-b PREV_PAGE
+keymap H BACK
+keymap g BEGIN
+keymap G END
+keymap ^ LINE_BEGIN
+keymap $ LINE_END
+keymap H PREV
+keymap L NEXT
+keymap w NEXT_WORD
+keymap b PREV_WORD
+keymap / ISEARCH
+keymap n SEARCH_NEXT
+keymap N SEARCH_PREV
+keymap o GOTO http://www.google.com/

@@ -1,0 +1,66 @@
+snippet #!
+	#!/usr/bin/perl
+ use strict;
+ use warnings;
+
+snippet .
+	 =>
+snippet sub
+	sub ${1:function_name} {
+		${0}
+	}
+snippet if
+	if (${1}) {
+		${0}
+	}
+snippet ife
+	if (${1}) {
+		${2}
+	}
+	else {
+		${0}
+	}
+snippet ifee
+	if (${1}) {
+		${2}
+	}
+	elsif (${3}) {
+		${4:# elsif...}
+	}
+	else {
+		${0}
+	}
+snippet eif
+	elsif (${1}) {
+		${0}
+	}
+snippet file_input
+ my $inputfile = "${1}";
+
+ open (INFILE, "< $inputfile") or die ("$!");
+ while(my $line=<INFILE>){
+ }
+
+ close(INFILE);
+snippet file_output_add
+ my $outputfile = "${1}";
+
+ open (OUTFILE, ">> $outputfile") or die ("$!");
+ print OUTFILE "hoge\n";
+
+ close(OUTFILE);
+snippet regex
+        =~//
+
+snippet chomp
+        chomp(${1})
+
+snippet foreach
+        foreach (${1:qw/ 1 2 3/}){
+         #print "This is $_\n";
+                ${2}
+        }
+        ${0}
+
+snippet reverse
+        reverse(${1:1..3})
