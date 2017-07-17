@@ -40,8 +40,6 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plug 'taichouchou2/alpaca_powertabline'
 Plug 'mrtazz/simplenote.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'L9'
-Plug 'rails.vim'
 Plug 'mhinz/vim-startify'
 "Plug 'http://svn.macports.org/repository/macports/contrib/mpvim/'
 Plug 'bronson/vim-trailing-whitespace'
