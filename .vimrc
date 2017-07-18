@@ -2,30 +2,6 @@ syntax on
 set nocompatible
 filetype off
 
-if has('vim_starting')
-	   set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-"call neobundle#begin(expand('~/.vim/bundle/'))
-
-"Let NeoBundle manage NeoBundle
-"NeoBundleFetch 'Shougo/neobundle.vim'
-
-" ...
-if filereadable(expand('~/.vimrc.bundle'))
-	source ~/.vimrc.bundle
-endif
-"call neobundle#end()
-
-filetype plugin indent on     " Required! #neobundle
-"
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-" Installation check.
-"NeoBundleCheck
 
 "filetype on
 filetype plugin on
