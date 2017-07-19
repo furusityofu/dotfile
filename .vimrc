@@ -2,6 +2,10 @@ syntax on
 set nocompatible
 filetype off
 
+if filereadable(expand('~/.vimrc.plugin')) 
+  source ~/.vimrc.plugin 
+  endif 
+
 
 "filetype on
 filetype plugin on
