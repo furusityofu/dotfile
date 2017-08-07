@@ -25,6 +25,7 @@ Plug 'idanarye/vim-merginal'
 Plug 'Shougo/vimproc'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimshell.vim'
+Plug 'rust-lang/rust.vim'
 
 Plug 'glidenote/memolist.vim'
 
