@@ -81,9 +81,6 @@ setopt print_eight_bit
 # ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
 setopt mark_dirs
 
-# シェルのプロセスごとに履歴を共有
-setopt share_history
-
 # cd をしたときにlsを実行する
 function chpwd() { ls -a }
 
@@ -104,15 +101,15 @@ if [ -f ~/.homebrew_api_token ];then
 fi
 
 #right prompt
-PROMPT=$BLUE'[%n@%m] %(!.#.$) '$WHITE
-RPROMPT=$GREEN'[%~]'$WHITE
-setopt transient_rprompt
+#PROMPT=$BLUE'[%n@%m] %(!.#.$) '$WHITE
+#RPROMPT=$GREEN'[%~]'$WHITE
+#setopt transient_rprompt
 
-PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
-PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
+#PATH="$HOME/perl5/bin${PATH+:}${PATH}"; export PATH;
+#PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+#PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+#PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+#PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 alias git-graph="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 alias tmattach="tmux a -t"

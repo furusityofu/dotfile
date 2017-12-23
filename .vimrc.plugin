@@ -31,10 +31,10 @@ Plug 'rust-lang/rust.vim'
 Plug 'glidenote/memolist.vim'
 
 Plug 'Shougo/vimfiler.vim'
+Plug 'rust-lang/rust.vim'
 
 Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/unite-outline'
-
+Plug 'keith/swift.vim'
 Plug 'kannokanno/previm'
 Plug 'tpope/vim-fugitive'
 Plug 'Lokaltog/vim-easymotion'
