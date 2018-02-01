@@ -49,6 +49,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'fuenor/qfixgrep'
 Plug 'tfnico/vim-gradle'
 
+Plug 'shawncplus/phpcomplete.vim'
+
 " " -- Clojure
 "Plug 'kien/rainbow_parentheses.vim'
 "Plug 'guns/vim-clojure-static'
