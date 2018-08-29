@@ -3,3 +3,4 @@
 .w3m/cookie
 /*~
 /.emacs.d/init.el~
+.emacs.d/flycheck_init.el
