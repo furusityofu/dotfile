@@ -60,6 +60,8 @@ Plug 'shawncplus/phpcomplete.vim'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
+
+Plug 'tyru/eskk.vim'
 call plug#end()
 
 " -- solarized personal conf
