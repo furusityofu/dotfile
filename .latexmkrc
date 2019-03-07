@@ -19,7 +19,7 @@ if ($^O eq 'MSWin32') {
     $pdf_previewer = 'texworks';
   }
 } else {
-  $latex = 'uplatex %O -synctex=1 -interaction=nonstopmode %S';
+  $latex = 'uplatex %O -synctex=1 -interaction=nonstopmode -shell-escape %S';
   $pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode %S';
   $lualatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
   $xelatex = 'xelatex %O -synctex=1 -interaction=nonstopmode %S';
