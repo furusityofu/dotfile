@@ -115,4 +115,10 @@ alias git-graph="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C
 alias tmattach="tmux a -t"
 alias findgrep="find ./ -type f -print0|xargs -0 grep"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -f $HOME/.iterm2_shell_integration.zsh ];then
+    source $HOME/.iterm2_shell_integration.zsh
+fi
+
+if [ -f $HOME/.zshrc.local.zsh ];then
+    source $HOME/.zshrc.local.zsh
+fi
