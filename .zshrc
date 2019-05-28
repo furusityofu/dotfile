@@ -8,6 +8,7 @@ fi
 case ${OSTYPE} in
 	darwin*)
 		#BSDlsコマンドのカラーリング
+		alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 		alias ls='ls -G -w'
 		;;
 	 linux*)
@@ -122,3 +123,4 @@ fi
 if [ -f $HOME/.zshrc.local.zsh ];then
     source $HOME/.zshrc.local.zsh
 fi
+typeset -U PATH
