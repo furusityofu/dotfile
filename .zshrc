@@ -10,6 +10,10 @@ case ${OSTYPE} in
 		#BSDlsコマンドのカラーリング
 		alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 		alias ls='ls -G -w'
+        fpath=(/usr/local/share/zsh/site-functions $fpath)
+        typeset -U fpath
+        autoload -U compinit
+        compinit
 		;;
 	 linux*)
 		alias ls='ls --color'
@@ -22,8 +26,6 @@ esac
 #alias
 
 #export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
-autoload -U compinit
-compinit
 
 ## Command history configuration
 #
