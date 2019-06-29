@@ -13,6 +13,13 @@ case ${OSTYPE} in
         fpath=(/usr/local/share/zsh/site-functions $fpath)
         typeset -U fpath
         autoload -U compinit
+        #Macのバージョン依存の設定
+        VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+        case $VER in
+            "10.14")
+                alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+                ;;
+        esac
         compinit
 		;;
 	 linux*)
@@ -118,23 +125,6 @@ alias git-graph="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C
 alias tmattach="tmux a -t"
 alias findgrep="find ./ -type f -print0|xargs -0 grep"
 
-#Macのバージョン依存の設定
-VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
-
-case $VER in
-    "10.8")
-        echo Mountain Lion
-        ;;
-    "10.9")
-        echo Mavericks
-        ;;
-    "10.10")
-        echo Yosemite
-        ;;
-    "10.14")
-        alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
-        ;;
-esac
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
