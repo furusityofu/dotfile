@@ -10,6 +10,8 @@ case ${OSTYPE} in
 		#BSDlsコマンドのカラーリング
 		alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 		alias ls='ls -G -w'
+        export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         fpath=(/usr/local/share/zsh/site-functions $fpath)
         typeset -U fpath
         autoload -U compinit
@@ -135,6 +137,10 @@ fi
 
 if [ -f $HOME/.iterm2_shell_integration.zsh ];then
     source $HOME/.iterm2_shell_integration.zsh
+fi
+
+if [ -d $HOME/.composer/vendor/bin ];then
+    export PATH=$HOME/.composer/vendor/bin:$PATH
 fi
 
 if [ -f $HOME/.zshrc.local.zsh ];then
