@@ -146,4 +146,7 @@ fi
 if [ -f $HOME/.zshrc.local.zsh ];then
     source $HOME/.zshrc.local.zsh
 fi
+if [ -d $HOME/.composer/vendor/bin ];then
+    export PATH=$HOME/.composer/vendor/bin:$PATH
+fi
 typeset -U PATH
