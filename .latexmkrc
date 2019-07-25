@@ -19,10 +19,10 @@ if ($^O eq 'MSWin32') {
     $pdf_previewer = 'texworks';
   }
 } else {
-  $latex = 'uplatex %O -synctex=1 -interaction=nonstopmode -shell-escape %S';
-  $pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode -shell-escape %S';
+  $latex = 'uplatex %O -synctex=1 -interaction=nonstopmode --shell-escape %S';
+  $pdflatex = 'pdflatex %O -synctex=1 -interaction=nonstopmode --shell-escape %S';
   $lualatex = 'lualatex %O -synctex=1 -interaction=nonstopmode %S';
-  $xelatex = 'xelatex %O -synctex=1 -interaction=nonstopmode -shell-escape %S';
+  $xelatex = 'xelatex %O -synctex=1 -interaction=nonstopmode --shell-escape %S';
   $biber = 'biber %O --bblencoding=utf8 -u -U --output_safechars %B';
   $bibtex = 'pbibtex -kanji=utf-8 %O %B';
   $makeindex = 'upmendex %O -o %D %S';
