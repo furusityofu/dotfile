@@ -150,7 +150,6 @@ if [ -d $HOME/.composer/vendor/bin ];then
     export PATH=$HOME/.composer/vendor/bin:$PATH
 fi
 if [ -d $HOME/.cargo/bin ];then
-    export PATH=$HOME/.cargo/bin:$PATH
     source $HOME/.cargo/env
 fi
 typeset -U PATH
