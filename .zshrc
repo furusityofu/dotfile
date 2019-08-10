@@ -13,16 +13,13 @@ case ${OSTYPE} in
         export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         fpath=(/usr/local/share/zsh/site-functions $fpath)
-        typeset -U fpath
-        autoload -U compinit
         #Macのバージョン依存の設定
         VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
         case $VER in
             "10.14")
-                alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
+                # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
                 ;;
         esac
-        compinit
 		;;
 	 linux*)
 		alias ls='ls --color'
@@ -152,4 +149,11 @@ fi
 if [ -d $HOME/.cargo/bin ];then
     source $HOME/.cargo/env
 fi
+alias nixinstall=nix-env -i
+alias nixsearch=nix-env -i
+alias e='emacsclient -nw -a ""'
+alias ekill='emacsclient -e "(kill-emacs)"'
+typeset -U fpath
+autoload -U compinit
+compinit
 typeset -U PATH
