@@ -149,8 +149,13 @@ fi
 if [ -d $HOME/.cargo/bin ];then
     source $HOME/.cargo/env
 fi
-alias nixinstall=nix-env -i
-alias nixsearch=nix-env -i
+alias nixinstall='nix-env -i'
+alias nixsearch='nix-env -qa'
+alias nixlist='nix-env --query --installed'
+alias nixoutdated='nix-env --upgrade --dry-run'
+alias nixupgrade='nix-env --upgrade'
+alias nixupdate='nix-channel --update'
+
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
 typeset -U fpath
