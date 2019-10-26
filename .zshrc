@@ -27,6 +27,12 @@ case ${OSTYPE} in
 			export TERM=fbterm
 		fi
 		alias fbterm='env LANG=ja_JP.UTF8 fbterm'
+        # Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
+        export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+        # Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
+        export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+        # Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
+        export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
 		;;
 esac
 #alias
