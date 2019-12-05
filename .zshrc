@@ -18,6 +18,7 @@ case ${OSTYPE} in
         case $VER in
             "10.14")
                 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
+                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
                 ;;
         esac
 		;;
