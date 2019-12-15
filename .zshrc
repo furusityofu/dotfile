@@ -156,12 +156,20 @@ fi
 if [ -d $HOME/.cargo/bin ];then
     source $HOME/.cargo/env
 fi
-alias nixinstall='nix-env -i'
-alias nixsearch='nix-env -qa'
-alias nixlist='nix-env --query --installed'
-alias nixoutdated='nix-env --upgrade --dry-run'
-alias nixupgrade='nix-env --upgrade'
-alias nixupdate='nix-channel --update'
+if [ -d $HOME/.nix-profile ];then
+    source $HOME/.nix-profile/etc/profile.d/nix.sh
+    source $HOME/.nix-profile/share/zsh/plugins/nix/nix.plugin.zsh
+    fpath=($HOME/nix-zsh-completions $fpath)
+    fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+    alias nixinstall='nix-env -i'
+    alias nixsearch='nix-env -qa'
+    alias nixlist='nix-env --query --installed'
+    alias nixoutdated='nix-env --upgrade --dry-run'
+    alias nixupgrade='nix-env --upgrade'
+    alias nixupdate='nix-channel --update'
+
+fi
+
 
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
