@@ -158,7 +158,7 @@ if [ -d $HOME/.cargo/bin ];then
 fi
 if [ -d $HOME/.nix-profile ];then
     source $HOME/.nix-profile/etc/profile.d/nix.sh
-    source $HOME/.nix-profile/share/zsh/plugins/nix/nix.plugin.zsh
+    # source $HOME/.nix-profile/share/zsh/plugins/nix/nix.plugin.zsh
     fpath=($HOME/nix-zsh-completions $fpath)
     fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
     alias nixinstall='nix-env -i'
@@ -167,7 +167,6 @@ if [ -d $HOME/.nix-profile ];then
     alias nixoutdated='nix-env --upgrade --dry-run'
     alias nixupgrade='nix-env --upgrade'
     alias nixupdate='nix-channel --update'
-
 fi
 
 
