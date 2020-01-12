@@ -13,7 +13,7 @@ case ${OSTYPE} in
         export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         fpath=(/usr/local/share/zsh/site-functions $fpath)
-        if [ -d /usr/local/opt/ruby/bin];then
+        if [ -d /usr/local/opt/ruby/bin ];then
             export PATH="/usr/local/opt/ruby/bin:$PATH"
         fi
         #Macのバージョン依存の設定
@@ -170,6 +170,10 @@ if [ -d $HOME/.nix-profile ];then
     alias nixoutdated='nix-env --upgrade --dry-run'
     alias nixupgrade='nix-env --upgrade'
     alias nixupdate='nix-channel --update'
+fi
+
+if [ -d $HOME/.zfunc ];then
+    fpath=($HOME/.zfunc $fpath)
 fi
 
 
