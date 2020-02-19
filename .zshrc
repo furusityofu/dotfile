@@ -6,12 +6,15 @@ fi
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 #mac専用の設定
 case ${OSTYPE} in
-	darwin*)
-		#BSDlsコマンドのカラーリング
-		alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
-		alias ls='ls -G -w'
+    darwin*)
+	#BSDlsコマンドのカラーリング
+	alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
+	alias ls='ls -G -w'
         export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+        export PATH=/usr/local/texlive/2019/bin/x86_64-darwin:$PATH
+
         fpath=(/usr/local/share/zsh/site-functions $fpath)
         if [ -d /usr/local/opt/ruby/bin ];then
             export PATH="/usr/local/opt/ruby/bin:$PATH"
@@ -24,21 +27,22 @@ case ${OSTYPE} in
                 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
                 ;;
         esac
-		;;
-	 linux*)
-		alias ls='ls --color'
-		if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
-			export TERM=fbterm
-		fi
-		alias fbterm='env LANG=ja_JP.UTF8 fbterm'
-        # Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
-        export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
-        # Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
-        export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+	;;
+    linux*)
+	alias ls='ls --color'
+	if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
+	    export TERM=fbterm
+	fi
+	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
         # Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
         export PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
-		;;
+	;;
 esac
+# Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
+export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
+# Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
+export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+
 #alias
 
 #export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib
@@ -74,12 +78,12 @@ setopt list_packed
 #directory preview
 case "$TERM" in
     xterm*|kterm*|rxvt*)
-    PROMPT=$(print "%B%{\e[34m%}%m:%(5~,%-2~/.../%2~,%~)%{\e[33m%}%# %b")
-    PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT") # title bar
-    ;;
+        PROMPT=$(print "%B%{\e[34m%}%m:%(5~,%-2~/.../%2~,%~)%{\e[33m%}%# %b")
+        PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT") # title bar
+        ;;
     *)
-    PROMPT='%m:%c%# '
-    ;;
+        PROMPT='%m:%c%# '
+        ;;
 esac
 
 #disable lately command execution
