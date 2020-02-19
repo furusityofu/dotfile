@@ -179,7 +179,7 @@ if [ -d /Users/furusho//.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustli
     export RUST_SRC_PATH='/Users/furusho/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
 fi
 
-
+export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
 typeset -U fpath
