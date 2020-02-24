@@ -179,9 +179,13 @@ fi
 if [ -d $HOME/.zfunc ];then
     fpath=($HOME/.zfunc $fpath)
 fi
-if [ -d /Users/furusho//.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
+if [ -d /Users/furusho/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
     export RUST_SRC_PATH='/Users/furusho/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
 fi
+if [ -d /home/linuxbrew/ ];then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 
 export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
