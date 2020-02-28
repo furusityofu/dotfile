@@ -4,3 +4,6 @@
 /*~
 /.emacs.d/init.el~
 .emacs.d/flycheck_init.el
+/.emacs.d/straight/build-cache.el
+/.emacs.d/straight/repos/
+/.emacs.d/straight/build/
