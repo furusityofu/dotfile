@@ -2,8 +2,7 @@ if [ -e $HOME/bin ]; then
     export PATH=$HOME/bin:$PATH
 else
 fi
-#ローカルの設定ファイルを読み込む
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 #mac専用の設定
 case ${OSTYPE} in
     darwin*)
@@ -86,7 +85,7 @@ case "$TERM" in
         ;;
 esac
 
-#disable lately command execution
+#disable lately command execution(統計のrとかぶる)
 disable r
 
 # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
@@ -179,8 +178,8 @@ fi
 if [ -d $HOME/.zfunc ];then
     fpath=($HOME/.zfunc $fpath)
 fi
-if [ -d /Users/furusho/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
-    export RUST_SRC_PATH='/Users/furusho/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/'
+if [ -d $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
+    export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
 fi
 if [ -d /home/linuxbrew/ ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
