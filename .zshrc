@@ -179,7 +179,11 @@ if [ -d $HOME/.zfunc ];then
     fpath=($HOME/.zfunc $fpath)
 fi
 if [ -d $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
-    export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
+    case ${OSTYPE} in
+        darwin*)
+            export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
+            ;;
+    esac
 fi
 if [ -d /home/linuxbrew/ ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
