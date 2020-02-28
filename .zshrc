@@ -29,6 +29,10 @@ case ${OSTYPE} in
                 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
                 ;;
         esac
+        export PATH="/usr/local/opt/llvm/bin:$PATH"
+        export LDFLAGS="-L/usr/local/opt/llvm/lib"
+        export CPPFLAGS="-I/usr/local/opt/llvm/include"
+        export JAVA_HOME=`/usr/libexec/java_home`
 	;;
     linux*)
 	alias ls='ls --color'
