@@ -25,6 +25,9 @@ case ${OSTYPE} in
                 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
                 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
                 ;;
+            "10.15")
+                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+                ;;
         esac
 	;;
     linux*)
