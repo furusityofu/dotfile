@@ -42,6 +42,7 @@ case ${OSTYPE} in
 	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
         # Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
         export PATH=$HOME/.local/bin:/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+        fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
 esac
 # Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
