@@ -4,17 +4,17 @@
 [core]
 	editor = emacs
 [color]
-        ui = auto
+	ui = auto
 [merge]
 	tool = vimdiff
 [alias]
-  graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-  ba = branch -a
-  st = status
-  c = commit
-  del-local-branch = branch --delete
-  del-remote-branch = push --delete origin
-  shared-init = init --bare --shared
-  co=checkout
-  diffst = diff stash@{0}
+	graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	ba = branch -a
+	st = status
+	c = commit
+	del-local-branch = branch --delete
+	del-remote-branch = push --delete origin
+	shared-init = init --bare --shared
+	co = checkout
+	diffst = diff stash@{0}
