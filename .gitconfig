@@ -1,5 +1,10 @@
+[user]
+	name = Hiroki Furusho
+	email = furusityofu@gmail.com
 [core]
-	editor = vim
+	editor = emacs
+[color]
+        ui = auto
 [merge]
 	tool = vimdiff
 [alias]
