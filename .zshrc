@@ -196,6 +196,11 @@ fi
 if [ -d /home/linuxbrew/ ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
+if [ -d ~/.roswell/ ]
+then
+    export PATH=~/.roswell/bin:$PATH
+fi
+
 
 
 export EDITOR=emacs
