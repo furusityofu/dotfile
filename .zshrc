@@ -1,7 +1,8 @@
-if [ -e $HOME/bin ]; then
-    export PATH=$HOME/bin:$PATH
+if [ -d $HOME/bin ]; then
 else
+    mkdir $HOME/bin
 fi
+export PATH=$HOME/bin:$PATH
 
 #mac専用の設定
 case ${OSTYPE} in
