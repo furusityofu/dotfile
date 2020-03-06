@@ -1,6 +1,5 @@
-[user]
-	name = Hiroki Furusho
-	email = furusityofu@gmail.com
+[include]
+	path = ~/.gitconfig.local
 [core]
 	editor = emacs
 [color]

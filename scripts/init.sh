@@ -5,4 +5,5 @@ ln -s $PWD/../.zshrc $HOME/
 touch $HOME/.zshrc.local.zsh
 ln -s $PWD/../.latexmkrc $HOME/
 ln -s $PWD/../.gitconfig $HOME/
+touch $HOME/.gitconfig.local
 sh ./init-emacs.sh
