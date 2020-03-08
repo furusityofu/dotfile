@@ -1,9 +1,3 @@
-if [ -d $HOME/bin ]; then
-else
-    mkdir $HOME/bin
-fi
-export PATH=$HOME/bin:$PATH
-
 #mac専用の設定
 case ${OSTYPE} in
     darwin*)
@@ -202,7 +196,11 @@ then
     export PATH=~/.roswell/bin:$PATH
 fi
 
-
+if [ -d $HOME/.local/bin ]; then
+else
+    mkdir -p $HOME/.local/bin
+fi
+export/ PATH=$HOME/.local/bin:$PATH
 
 export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
