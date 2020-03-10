@@ -200,7 +200,7 @@ if [ -d $HOME/.local/bin ]; then
 else
     mkdir -p $HOME/.local/bin
 fi
-export/ PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
