@@ -21,7 +21,7 @@ case ${OSTYPE} in
                 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
                 ;;
             "10.15")
-                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
                 ;;
         esac
         export PATH="/usr/local/opt/llvm/bin:$PATH"
