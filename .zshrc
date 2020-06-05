@@ -148,6 +148,18 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
+
+# poetry
+# https://github.com/python-poetry/poetry
+# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+if [ -f $HOME/.poetry/env ];then
+    source $HOME/.poetry/env
+    poetry config virtualenvs.in-project true
+fi
+
+
 if [ -f $HOME/.iterm2_shell_integration.zsh ];then
     source $HOME/.iterm2_shell_integration.zsh
 fi
