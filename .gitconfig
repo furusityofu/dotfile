@@ -17,3 +17,5 @@
 	shared-init = init --bare --shared
 	co = checkout
 	diffst = diff stash@{0}
+[status]
+	showUntrackedFiles = all
