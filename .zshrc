@@ -213,7 +213,8 @@ else
     mkdir -p $HOME/.local/bin
 fi
 export PATH=$HOME/.local/bin:$PATH
-
+# git-remind
+export GIT_REMIND_PATHS=$HOME/git/*
 export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
