@@ -7,7 +7,7 @@ case ${OSTYPE} in
         export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-        export PATH=/usr/local/texlive/2019/bin/x86_64-darwin:$PATH
+        export PATH=/usr/local/texlive/2020/bin/x86_64-darwin:$PATH
 
         fpath=(/usr/local/share/zsh/site-functions $fpath)
         if [ -d /usr/local/opt/ruby/bin ];then
@@ -35,15 +35,12 @@ case ${OSTYPE} in
 	    export TERM=fbterm
 	fi
 	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
-        # Most importantly, add /usr/local/texlive/2019/bin/x86_64-linux
-        export PATH=$HOME/.local/bin:/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+        export PATH=$HOME/.local/bin:/usr/local/texlive/2020/bin/x86_64-linux:$PATH
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
 esac
-# Add /usr/local/texlive/2019/texmf-dist/doc/man to MANPATH.
-export MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH
-# Add /usr/local/texlive/2019/texmf-dist/doc/info to INFOPATH.
-export INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH
+export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 
 #alias
 
