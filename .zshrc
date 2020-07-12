@@ -209,6 +209,11 @@ if [ -d $HOME/.local/bin ]; then
 else
     mkdir -p $HOME/.local/bin
 fi
+# for wsl
+if [ -f  /mnt/c/Windows/System32/wsl.exe ]; then
+    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+    export GDK_SCALE=2
+fi
 export PATH=$HOME/.local/bin:$PATH
 # git-remind
 export GIT_REMIND_PATHS=$HOME/git/*
