@@ -17,6 +17,7 @@
 	shared-init = init --bare --shared
 	co = checkout
 	diffst = diff stash@{0}
+	root = rev-parse --show-toplevel
 [status]
 	showUntrackedFiles = all
 [filter "lfs"]
