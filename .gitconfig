@@ -1,5 +1,8 @@
 [include]
 	path = ~/.gitconfig.local
+	# [user]
+	# name = 
+	# email = 
 [core]
 	editor = emacs
 [color]
