@@ -4,6 +4,7 @@ ln -s $PWD/../.editorconfig $HOME/
 ln -s $PWD/../.zshrc $HOME/
 touch $HOME/.zshrc.local.zsh
 ln -s $PWD/../.latexmkrc $HOME/
-ln -s $PWD/../.gitconfig $HOME/
-touch $HOME/.gitconfig.local
+mkdir -p $HOME/.config/git/
+ln -s $PWD/../.gitconfig $HOME/.config/git/config
+touch $HOME/.config/git/config.local
 sh ./init-emacs.sh
