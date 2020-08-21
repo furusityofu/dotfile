@@ -138,23 +138,6 @@ alias tmattach="tmux a -t"
 alias findgrep="find ./ -type f -print0|xargs -0 grep"
 
 
-#pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-# pipenv
-export PIPENV_VENV_IN_PROJECT=1
-
-# poetry
-# https://github.com/python-poetry/poetry
-# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-if [ -f $HOME/.poetry/env ];then
-    source $HOME/.poetry/env
-    poetry config virtualenvs.in-project true
-fi
 
 
 if [ -f $HOME/.iterm2_shell_integration.zsh ];then
@@ -206,6 +189,24 @@ if [ -d $HOME/.local/bin ]; then
 else
     mkdir -p $HOME/.local/bin
 fi
+#pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT=1
+
+# poetry
+# https://github.com/python-poetry/poetry
+# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+if [ -f $HOME/.poetry/env ];then
+    source $HOME/.poetry/env
+    poetry config virtualenvs.in-project true
+fi
+
 # for wsl
 if [ -f  /mnt/c/Windows/System32/wsl.exe ]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
