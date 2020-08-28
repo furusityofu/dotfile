@@ -1,12 +1,5 @@
 ;https://editorconfig-specification.readthedocs.io/en/latest/
 root=true
 
-[*]
-charset = utf-8
-
-[*.py]
-indent_style = space
-indent_size = 4
-
-[Makefile]
+[{config,config.local}]
 indent_style = tab
