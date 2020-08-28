@@ -1,8 +1,5 @@
 [include]
 	path = ~/.config/git/config.local
-	# [user]
-	# name = 
-	# email = 
 [core]
 	editor = emacs
 [color]
@@ -21,6 +18,8 @@
 	co = checkout
 	diffst = diff stash@{0}
 	root = rev-parse --show-toplevel
+	unwatch = update-index --skip-worktree
+	watch = update-index --no-skip-worktree
 [status]
 	showUntrackedFiles = all
 [filter "lfs"]
