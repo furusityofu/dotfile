@@ -7,4 +7,5 @@ ln -s $PWD/../.latexmkrc $HOME/
 mkdir -p $HOME/.config/git/
 ln -s $PWD/../.gitconfig $HOME/.config/git/config
 touch $HOME/.config/git/config.local
+ln -s $PWD/../.config/bat/ $HOME/.config/
 sh ./init-emacs.sh
