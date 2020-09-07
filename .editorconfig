@@ -11,5 +11,5 @@ indent_size = 4
 [Makefile]
 indent_style = tab
 
-[*.s]
+[*.s,*.asm]
 indent_style = tab
