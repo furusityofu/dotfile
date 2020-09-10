@@ -35,7 +35,7 @@ case ${OSTYPE} in
 	    export TERM=fbterm
 	fi
 	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
-        export PATH=$HOME/.local/bin:/usr/local/texlive/2020/bin/x86_64-linux:$PATH
+        export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
 esac
@@ -212,7 +212,7 @@ if [ -f  /mnt/c/Windows/System32/wsl.exe ]; then
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
     export GDK_SCALE=2
 fi
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
 # git-remind
 export GIT_REMIND_PATHS=$HOME/git/*
 export EDITOR=emacs
