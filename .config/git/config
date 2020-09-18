@@ -21,7 +21,7 @@
 	unwatch = update-index --skip-worktree
 	watch = update-index --no-skip-worktree
 	ignored = !git ls-files -v | grep "^[[:lower:]]"
-	unwatch-files = !git ls-files -v | grep "^[S]"
+	list-unwatched = !git ls-files -v | grep "^[S]"
 [status]
 	showUntrackedFiles = all
 [filter "lfs"]
