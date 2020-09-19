@@ -31,6 +31,7 @@ case ${OSTYPE} in
 	;;
     linux*)
 	alias ls='ls --color'
+        alias ll='exa -l'
 	if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
 	    export TERM=fbterm
 	fi
