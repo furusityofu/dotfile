@@ -152,7 +152,7 @@ fi
 if [ -f $HOME/.zshrc.local.zsh ];then
     source $HOME/.zshrc.local.zsh
 fi
-if [ -d $HOME/.cargo/bin ];then
+if [ -f $HOME/.cargo/env ];then
     source $HOME/.cargo/env
 fi
 if [ -d $HOME/.nix-profile ];then
