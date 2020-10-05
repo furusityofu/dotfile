@@ -7,5 +7,4 @@ mkdir -p $HOME/.config/
 ln -s $PWD/../.config/git/ $HOME/.config/
 ln -s $PWD/../.config/bat/ $HOME/.config/
 ln -s $PWD/../.config/latexmk/ $HOME/.config/
-ln -s ../git/dotfile/.config/gopass/ $HOME/.config/gopass
 sh ./init-emacs.sh
