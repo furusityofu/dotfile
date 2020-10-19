@@ -386,6 +386,7 @@
     :config
     (add-to-list 'context-skk-programming-mode 'python-mode)
     (add-to-list 'context-skk-programming-mode 'rustic-mode)
+    (add-to-list 'context-skk-programming-mode 'js-mode)
     (setq context-skk-mode-off-message "[context-skk] 日本語入力 off")
     (context-skk-mode))
   )
@@ -1555,9 +1556,11 @@ See `org-capture-templates' for more information."
                                             ".venv/lib/")
                                            t))))))
                            (message "lsp-python-ms-extra-paths `%s'" lsp-python-ms-extra-paths))
+                         ;; or lsp
                          (lsp-deferred)))
-  )  ; or lsp
+  )
 (leaf pipenv
+  :disabled t
   :hook (python-mode-hook . pipenv-mode)
   :init
   (setq
