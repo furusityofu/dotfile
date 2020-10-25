@@ -185,7 +185,10 @@ if [ -d ~/.roswell/ ]
 then
     export PATH=~/.roswell/bin:$PATH
 fi
-
+if [ -d $HOME/go ]; then
+    export GOPATH=$HOME/go/
+    PATH=$PATH:$GOPATH/bin
+fi
 if [ -d $HOME/.local/bin ]; then
 else
     mkdir -p $HOME/.local/bin
@@ -227,6 +230,7 @@ export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
 
 export PATH=$PATH:$HOME/.local/bin
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 # git-remind
 export GIT_REMIND_PATHS=$HOME/git/*
 export EDITOR=emacs
