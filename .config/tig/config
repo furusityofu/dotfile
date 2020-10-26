@@ -1,0 +1,6 @@
+set mouse	= yes
+
+bind generic	<C-P>	move-up
+bind generic	<C-N>	move-down
+bind main	<C-S>	search
+bind main	<C-R>	search-back
