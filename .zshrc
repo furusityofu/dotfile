@@ -36,6 +36,15 @@ case ${OSTYPE} in
 	    export TERM=fbterm
 	fi
 	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
+        alias pacman-rm='pacman -R'
+        alias pacman-rm-and-deps='pacman -Rs'
+        alias pacman-rm-only='pacman -Rdd'
+        alias pacman-query-search-installed='pacman -Qs'
+        alias pacman-sync-info='pacman -Si'
+        alias pacman-query-info-installed='pacman -Qi'
+        alias pacman-query-owner-package='pacman -Qo'
+        alias pacman-sync-downloadonly='pacman -Sw'
+        alias pacman-find-refresh='pacman -Fy'
         export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
