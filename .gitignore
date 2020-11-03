@@ -9,3 +9,4 @@
 /.emacs.d/straight/build/
 /.emacs.d/lisp/picasm/
 /.emacs.d/straight/modified/
+/.config/git/config.local
