@@ -39,12 +39,13 @@ case ${OSTYPE} in
         alias pacman-rm='pacman -R'
         alias pacman-rm-and-deps='pacman -Rs'
         alias pacman-rm-only='pacman -Rdd'
-        alias pacman-query-search-installed='pacman -Qs'
-        alias pacman-sync-info='pacman -Si'
-        alias pacman-query-info-installed='pacman -Qi'
-        alias pacman-query-owner-package='pacman -Qo'
-        alias pacman-sync-downloadonly='pacman -Sw'
-        alias pacman-find-refresh='pacman -Fy'
+        alias pacman-search-installed-package='pacman -Qs'
+        alias pacman-info-remote='pacman -Si'
+        alias pacman-info-installed='pacman -Qi'
+        alias pacman-search-file-owned='pacman -Qo'
+        alias pacman-downloadonly='pacman -Sw'
+        alias pacman-refresh-file-database='pacman -Fy'
+        alias pacman-list-installed='pacman -Qe'
         export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
