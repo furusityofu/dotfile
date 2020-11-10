@@ -46,6 +46,9 @@ case ${OSTYPE} in
         alias pacman-downloadonly='pacman -Sw'
         alias pacman-refresh-file-database='pacman -Fy'
         alias pacman-list-installed='pacman -Qe'
+        function find_cd() {
+            cd "$(find . -type d | peco)"
+        }
         export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
 	;;
