@@ -51,6 +51,7 @@ case ${OSTYPE} in
         }
         export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
 esac
 export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
