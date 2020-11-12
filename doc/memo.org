@@ -1,0 +1,7 @@
+* メモ
+** gpg-agent
+*** pinentry
+    GUIのpinentryプログラムへのsymlinkが必要
+    
+    [[file+emacs:../.gnupg/gpg-agent.conf::pinentry-program /usr/local/bin/pinentry-gui][gpg-agent.conf]]
+    
