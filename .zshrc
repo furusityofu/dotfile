@@ -23,6 +23,13 @@ case ${OSTYPE} in
             "10.15")
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
                 ;;
+            "11.0")
+                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+                export PROMPT="%n@%m(`uname -m`) %1~ %# "
+                alias intelbrew="/usr/local/bin/brew"
+                alias armbrew="/opt/homebrew/bin/brew"
+                PATH=/opt/homebrew/bin:$PATH
+                ;;
         esac
         export PATH="/usr/local/opt/llvm/bin:$PATH"
         export LDFLAGS="-L/usr/local/opt/llvm/lib"
