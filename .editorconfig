@@ -11,3 +11,6 @@ indent_size = 4
 
 [{*.s,*.asm,Makefile,.config/**/config}]
 indent_style = tab
+
+[sshcontrol]
+insert_final_newline=true
