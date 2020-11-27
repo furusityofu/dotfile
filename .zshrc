@@ -113,9 +113,6 @@ fi
 if [ -f $HOME/.zshrc.local.zsh ];then
     source $HOME/.zshrc.local.zsh
 fi
-if [ -f $HOME/.cargo/env ];then
-    source $HOME/.cargo/env
-fi
 if [ -d $HOME/.nix-profile ];then
     source $HOME/.nix-profile/etc/profile.d/nix.sh
     # source $HOME/.nix-profile/share/zsh/plugins/nix/nix.plugin.zsh
@@ -132,13 +129,28 @@ fi
 if [ -d $HOME/.zfunc ];then
     fpath=($HOME/.zfunc $fpath)
 fi
-if [ -d $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
-    case ${OSTYPE} in
-        darwin*)
-            export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
-            ;;
-    esac
-fi
+
+# rust
+case ${MACVER} in
+    "11.0" )
+        PATH=$HOME/.rustup/toolchains/nightly-aarch64-apple-darwin/bin:$PATH
+        export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/src/
+        ;;
+    * )
+        if [ -f $HOME/.cargo/env ];then
+            source $HOME/.cargo/env
+        fi
+
+        if [ -d $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
+            case ${OSTYPE} in
+                darwin*)
+                    export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
+                    ;;
+            esac
+        fi
+        ;;
+esac
+
 if [ -d /home/linuxbrew/ ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
