@@ -245,7 +245,7 @@ case ${OSTYPE} in
             "11.0")
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
                 export PROMPT="%n@%m(`uname -m`) %1~ %# "
-                alias intelbrew="/usr/local/bin/brew"
+                alias intelbrew="arch --x86_64 /usr/local/bin/brew"
                 alias armbrew="/opt/homebrew/bin/brew"
                 PATH=/opt/local/bin:/opt/homebrew/bin:$PATH
                 ;;
