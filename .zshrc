@@ -1,3 +1,6 @@
+#macOSのバージョン番号
+MACVER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+
 export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 
@@ -219,9 +222,7 @@ case ${OSTYPE} in
         if [ -d /usr/local/opt/ruby/bin ];then
             export PATH="/usr/local/opt/ruby/bin:$PATH"
         fi
-        #Macのバージョン依存の設定
-        VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
-        case $VER in
+        case $MACVER in
             "10.14")
                 # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
                 export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
