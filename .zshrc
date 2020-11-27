@@ -1,66 +1,3 @@
-#mac専用の設定
-case ${OSTYPE} in
-    darwin*)
-	#BSDlsコマンドのカラーリング
-	alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
-	alias ls='ls -G -w'
-        export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-        export PATH=/usr/local/texlive/2020/bin/x86_64-darwin:$PATH
-
-        fpath=(/usr/local/share/zsh/site-functions $fpath)
-        if [ -d /usr/local/opt/ruby/bin ];then
-            export PATH="/usr/local/opt/ruby/bin:$PATH"
-        fi
-        #Macのバージョン依存の設定
-        VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
-        case $VER in
-            "10.14")
-                # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
-                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
-                ;;
-            "10.15")
-                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
-                ;;
-            "11.0")
-                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
-                export PROMPT="%n@%m(`uname -m`) %1~ %# "
-                alias intelbrew="/usr/local/bin/brew"
-                alias armbrew="/opt/homebrew/bin/brew"
-                PATH=/opt/local/bin:/opt/homebrew/bin:$PATH
-                ;;
-        esac
-        export PATH="/usr/local/opt/llvm/bin:$PATH"
-        export LDFLAGS="-L/usr/local/opt/llvm/lib"
-        export CPPFLAGS="-I/usr/local/opt/llvm/include"
-        export JAVA_HOME=`/usr/libexec/java_home`
-	;;
-    linux*)
-	alias ls='ls --color'
-        alias ll='exa -l'
-	if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
-	    export TERM=fbterm
-	fi
-	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
-        alias pacman-rm='pacman -R'
-        alias pacman-rm-and-deps='pacman -Rs'
-        alias pacman-rm-only='pacman -Rdd'
-        alias pacman-search-installed-package='pacman -Qs'
-        alias pacman-info-remote='pacman -Si'
-        alias pacman-info-installed='pacman -Qi'
-        alias pacman-search-file-owned='pacman -Qo'
-        alias pacman-downloadonly='pacman -Sw'
-        alias pacman-refresh-file-database='pacman -Fy'
-        alias pacman-list-installed='pacman -Qe'
-        function find_cd() {
-            cd "$(find . -type d | peco)"
-        }
-        export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
-        fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
-        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-	;;
-esac
 export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 
@@ -266,6 +203,71 @@ export GIT_REMIND_PATHS=$HOME/git/*
 export EDITOR=emacs
 alias e='emacsclient -nw -a ""'
 alias ekill='emacsclient -e "(kill-emacs)"'
+
+#OS固有の設定
+case ${OSTYPE} in
+    darwin*)
+	#BSDlsコマンドのカラーリング
+	alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
+	alias ls='ls -G -w'
+        # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
+        # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+        # export PATH=/usr/local/texlive/2020/bin/x86_64-darwin:$PATH
+
+        fpath=(/usr/local/share/zsh/site-functions $fpath)
+        if [ -d /usr/local/opt/ruby/bin ];then
+            export PATH="/usr/local/opt/ruby/bin:$PATH"
+        fi
+        #Macのバージョン依存の設定
+        VER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+        case $VER in
+            "10.14")
+                # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
+                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
+                ;;
+            "10.15")
+                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+                ;;
+            "11.0")
+                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+                export PROMPT="%n@%m(`uname -m`) %1~ %# "
+                alias intelbrew="/usr/local/bin/brew"
+                alias armbrew="/opt/homebrew/bin/brew"
+                PATH=/opt/local/bin:/opt/homebrew/bin:$PATH
+                ;;
+        esac
+        export PATH="/usr/local/opt/llvm/bin:$PATH"
+        export LDFLAGS="-L/usr/local/opt/llvm/lib"
+        export CPPFLAGS="-I/usr/local/opt/llvm/include"
+        export JAVA_HOME=`/usr/libexec/java_home`
+	;;
+    linux*)
+	alias ls='ls --color'
+        alias ll='exa -l'
+	if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
+	    export TERM=fbterm
+	fi
+	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
+        alias pacman-rm='pacman -R'
+        alias pacman-rm-and-deps='pacman -Rs'
+        alias pacman-rm-only='pacman -Rdd'
+        alias pacman-search-installed-package='pacman -Qs'
+        alias pacman-info-remote='pacman -Si'
+        alias pacman-info-installed='pacman -Qi'
+        alias pacman-search-file-owned='pacman -Qo'
+        alias pacman-downloadonly='pacman -Sw'
+        alias pacman-refresh-file-database='pacman -Fy'
+        alias pacman-list-installed='pacman -Qe'
+        function find_cd() {
+            cd "$(find . -type d | peco)"
+        }
+        export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
+        fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	;;
+esac
+
 typeset -U fpath
 autoload -U compinit
 compinit
