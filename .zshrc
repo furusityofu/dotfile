@@ -207,7 +207,6 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 
-export PATH=$PATH:$HOME/.local/bin
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 # git-remind
 export GIT_REMIND_PATHS=$HOME/git/*
@@ -244,6 +243,7 @@ case ${OSTYPE} in
                 alias intelbrew="arch --x86_64 /usr/local/bin/brew"
                 alias armbrew="/opt/homebrew/bin/brew"
                 PATH=/opt/local/bin:/opt/homebrew/bin:$PATH
+                alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
                 ;;
         esac
         export PATH="/usr/local/opt/llvm/bin:$PATH"
