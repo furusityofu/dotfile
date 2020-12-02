@@ -162,10 +162,6 @@ if [ -d $HOME/go ]; then
     export GOPATH=$HOME/go/
     PATH=$PATH:$GOPATH/bin
 fi
-if [ -d $HOME/.local/bin ]; then
-else
-    mkdir -p $HOME/.local/bin
-fi
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
@@ -280,6 +276,12 @@ case ${OSTYPE} in
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
 esac
+if [ -d $HOME/.local/bin ]; then
+else
+    mkdir -p $HOME/.local/bin
+fi
+PATH=$HOME/.local/bin:$PATH
+
 
 typeset -U fpath
 autoload -U compinit
