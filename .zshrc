@@ -133,8 +133,8 @@ fi
 # rust
 case ${MACVER} in
     "11.0" )
-        PATH=$HOME/.rustup/toolchains/nightly-aarch64-apple-darwin/bin:$PATH
-        export RUST_SRC_PATH=$HOME/.rustup/toolchains/nightly-aarch64-apple-darwin/lib/rustlib/src/rust/src/
+        PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/bin:$PATH
+        export RUST_SRC_PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/lib/rustlib/src/rust/src/
         ;;
     * )
         if [ -f $HOME/.cargo/env ];then
