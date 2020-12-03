@@ -218,7 +218,6 @@ alias ekill='emacsclient -e "(kill-emacs)"'
 case ${OSTYPE} in
     darwin*)
 	#BSDlsコマンドのカラーリング
-	alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 	alias ls='ls -G -w'
         # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/usr/local/share/zsh-syntax-highlighting/highlighters
         # source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -230,12 +229,13 @@ case ${OSTYPE} in
             export PATH="/usr/local/opt/ruby/bin:$PATH"
         fi
         case $MACVER in
-            "10.14")
-                # alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs" #gui用設定
-                export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
-                ;;
-            "10.15")
+            "10.14" | "10.15")
+	        alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
+                export PATH="/usr/local/opt/llvm/bin:$PATH"
+                export LDFLAGS="-L/usr/local/opt/llvm/lib"
+                export CPPFLAGS="-I/usr/local/opt/llvm/include"
+                export JAVA_HOME=`/usr/libexec/java_home`
                 ;;
             "11.0")
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
@@ -246,10 +246,6 @@ case ${OSTYPE} in
                 alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
                 ;;
         esac
-        export PATH="/usr/local/opt/llvm/bin:$PATH"
-        export LDFLAGS="-L/usr/local/opt/llvm/lib"
-        export CPPFLAGS="-I/usr/local/opt/llvm/include"
-        export JAVA_HOME=`/usr/libexec/java_home`
 	;;
     linux*)
 	alias ls='ls --color'
