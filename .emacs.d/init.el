@@ -202,8 +202,9 @@
  '(org-table ((t (:foreground "cornflower blue")))))
 
 (leaf initchart
-  :disabled t
+  ;; :disabled t
   :straight (initchart :type git :host github :repo "yuttie/initchart")
+  :require t
   :config
   (initchart-record-execution-time-of load file)
   (initchart-record-execution-time-of require feature))
@@ -672,8 +673,12 @@
            (:org-mode-map
             ("C-c C-\'" . org-insert-structure-template)))
     :init
-    (when (file-exists-p "~/git/notes/")
-      (setq org-directory (expand-file-name "~/git/notes/")))
+    (setq org-directory
+          (expand-file-name
+           (if (file-exists-p "~/git/notes")
+               "~/git/notes"
+             "~/org")))
+
     :custom
     ((org-preview-latex-default-process . 'dvisvgm))
     :config
@@ -695,18 +700,18 @@
       (setq org-plantuml-jar-path
             "/usr/local/opt/plantuml/libexec/plantuml.jar"))
 
-    
+
     (setq org-agenda-files
           (list
-           (concat org-directory "agenda/")
-           (concat org-directory "task.org")
-           (concat org-directory "habit.org")
-           (concat org-directory "event.org")
-           (concat org-directory "inbox.org")
-           (concat org-directory "productivity.org")
-           (concat org-directory "org-ical.org")
-           (concat org-directory "notes/")
-           (concat org-directory "googlecalendar/")))
+           (concat org-directory "/agenda/")
+           (concat org-directory "/task.org")
+           (concat org-directory "/habit.org")
+           (concat org-directory "/event.org")
+           (concat org-directory "/inbox.org")
+           (concat org-directory "/productivity.org")
+           (concat org-directory "/org-ical.org")
+           (concat org-directory "/notes/")
+           (concat org-directory "/googlecalendar/")))
     (setq org-refile-targets
           '((org-agenda-files :maxlevel . 2)))
     (setq org-tag-alist
@@ -714,34 +719,34 @@
             ("MAIL" . ?m) ("PROJECT" . ?p) ("備忘録" . ?b)))
     (setq org-capture-templates
           `(("i" "インボックス" entry
-             (file ,(concat org-directory "inbox.org"))
+             (file ,(concat org-directory "/inbox.org"))
              "* %? %i\n %U\n")
             ;; ("h" "定期的にやること" entry
-            ;;  (file ,(concat org-directory "habit.org"))
+            ;;  (file ,(concat org-directory "/habit.org"))
             ;;  "* %?\n %U\n")
             ("t" "タスク" entry
-             (file ,(concat org-directory "task.org"))
+             (file ,(concat org-directory "/task.org"))
              "* TODO %? %i\n %U\n")
             ("e" "イベント" entry
-             (file ,(concat org-directory "event.org"))
+             (file ,(concat org-directory "/event.org"))
              "* EVENT %? %i\n %a\n %U\n")
             ("n"
              "ノート(本文から書く)"
              entry
-             (file+headline, (concat org-directory "notes.org") "MEMO")
+             (file+headline, (concat org-directory "/notes.org") "MEMO")
              "* %U \n%?")
             ("N"
              "ノート(見出しから書く)"
              entry
-             (file+headline, (concat org-directory "notes.org") "MEMO")
+             (file+headline, (concat org-directory "/notes.org") "MEMO")
              "* %U %?\n\n\n")
             ("r" "読みかけ(リンク付き)" entry
-             (file ,(concat org-directory "reading.org"))
+             (file ,(concat org-directory "/reading.org"))
              "* %?\n %a\n %U\n")
             ("m"
              "みんなで会議"
              entry
-             (file+olp+datetree (concat org-directory "minutes.org") "会議")
+             (file+olp+datetree (concat org-directory "/minutes.org") "会議")
              "* %T %?"
              :empty-lines 1
              :jump-to-captured 1)
@@ -756,19 +761,19 @@
             ("g"
              "とりあえず 仕事を放り込む"
              entry
-             (file+headline (concat org-directory "gtd.org") "GTD")
+             (file+headline (concat org-directory "/gtd.org") "GTD")
              "** TODO %T %?\n   Entered on %U    %i\n"
              :empty-lines 1)
             ("i"
              "itemのテスト"
              item
-             (file+headline (concat org-directory "gtd.org") "GTD")
+             (file+headline (concat org-directory "/gtd.org") "GTD")
              "** TODO %T %?\n   Entered on %U    %i\n"
              :empty-lines 1)
             ("z"
              "'あれ'についてのメモ"
              entry
-             (file+headline , (concat org-directory "notes.org") "MEMO")
+             (file+headline , (concat org-directory "/notes.org") "MEMO")
              "* %U %? %^g\n\n"
              :empty-lines 1)))
     ;;
@@ -878,8 +883,9 @@
   :after org
   :commands org-journal-new-entry
   :custom
-  (org-journal-dir (concat org-directory "journal"))
-  (org-journal-date-format "%A, %d %B %Y")
+  (org-journal-file-type 'monthly)
+  (org-journal-dir (concat org-directory "/journal"))
+  (org-journal-date-format "%A, %F")
   (org-journal-file-header "# -*- mode: org-journal; -*-"))
 
 
@@ -1239,7 +1245,7 @@
   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
   ("\\paragraph{%s}" . "\\paragraph*{%s}")
   ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  
+
   ;; org-export-latex-no-toc
   (defun org-export-latex-no-toc (depth)
     (when depth
@@ -1596,14 +1602,14 @@ See `org-capture-templates' for more information."
   (lsp-ui-doc-max-height 20)
   (lsp-ui-doc-use-childframe t)
   (lsp-ui-doc-use-webkit nil)
-  
+
   (lsp-ui-sideline-enable t)
   (lsp-ui-sideline-ignore-duplicate t)
   (lsp-ui-sideline-show-symbol t)
   (lsp-ui-sideline-show-hover t)
   (lsp-ui-sideline-show-diagnostics t)
   (lsp-ui-sideline-show-code-actions t)
-  
+
   :hook (lsp-mode . lsp-ui-mode)
   :commands lsp-ui-mode
   :after lsp-mode)
