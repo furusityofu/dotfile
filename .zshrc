@@ -1,5 +1,8 @@
 #macOSのバージョン番号
 MACVER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+HOMEBREW_DIR_A="/opt/homebrew"
+HOMEBREW_DIR_I="/usr/local"
+MACPORTS_DIR_A="/opt/local"
 
 export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
@@ -240,9 +243,9 @@ case ${OSTYPE} in
             "11.0")
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
                 export PROMPT="%n@%m(`uname -m`) %1~ %# "
-                alias intelbrew="arch --x86_64 /usr/local/bin/brew"
-                alias armbrew="/opt/homebrew/bin/brew"
-                PATH=/opt/local/bin:/opt/homebrew/bin:$PATH
+                alias intelbrew="PATH=$HOMEBREW_DIR_I/bin:/usr/bin:/bin:$HOMEBREW_DIR_I/sbin:/usr/sbin:/sbin arch --x86_64 $HOMEBREW_DIR_I/bin/brew"
+                alias armbrew="PATH=$HOMEBREW_DIR_A/bin:/usr/bin:/bin:$HOMEBREW_DIR_A/sbin:/usr/sbin:/sbin $HOMEBREW_DIR_A/bin/brew"
+                PATH=$MACPORTS_DIR_A/bin:$HOMEBREW_DIR_A/bin:$HOMEBREW_DIR_A/sbin:$PATH
                 alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
                 ;;
         esac
