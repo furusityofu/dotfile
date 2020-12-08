@@ -8,10 +8,11 @@
 (show-paren-mode t)
 
 ;; 絵文字のフォント設定
-(set-fontset-font t 'symbol "Apple Color Emoji")
-(set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
-(set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
-(set-fontset-font t 'symbol "Symbola" nil 'append)
+(when window-system
+  (set-fontset-font t 'symbol "Apple Color Emoji")
+  (set-fontset-font t 'symbol "Noto Color Emoji" nil 'append)
+  (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append)
+  (set-fontset-font t 'symbol "Symbola" nil 'append))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -1295,8 +1296,10 @@ See `org-capture-templates' for more information."
                (file+olp "all-posts.org" "Blog Ideas")
                (function org-hugo-new-subtree-post-capture-template))))
 
-(use-package ox-pandoc
-;;  :ensure-system-package pandoc
+(leaf ox-pandoc
+  ;;  :ensure-system-package pandoc
+  :if (or (file-exists-p "/usr/local/bin/pandoc")
+          (file-exists-p "/opt/local/bin/pandoc"))
   :after ox)
 (use-package org-download
   :after org
@@ -1306,7 +1309,11 @@ See `org-capture-templates' for more information."
 ;;  :ensure-system-package (rg . ripgrep)
   :config
   (setq org-seek-search-tool 'ripgrep))
-(use-package org-pdftools
+
+(leaf org-pdf*
+  :disabled t
+  :config
+  (use-package org-pdftools
   :after org
   :straight (org-pdftools :type git :host github :repo "fuxialexander/org-pdftools")
   :config (setq org-pdftools-root-dir (concat (getenv "HOME") "/GoogleDrive/Books"))
@@ -1317,12 +1324,22 @@ See `org-capture-templates' for more information."
                              :store #'org-pdftools-store-link
                              :export #'org-pdftools-export)
     (add-hook 'org-store-link-functions 'org-pdftools-store-link)))
-
-(use-package org-noter
+  (use-package org-noter
   :after (org))
-(use-package org-noter-pdftools
+  (use-package org-noter-pdftools
   :straight (org-noter-pdftools :type git :host github :repo "fuxialexander/org-pdftools")
   :after (org-noter))
+  (leaf pdf-tools
+  :disabled t
+  :straight t
+  ;; https://github.com/politza/pdf-tools#installation
+  :mode (("\\.pdf\\'" . pdf-view-mode))
+  :config
+  (pdf-tools-install)
+  (display-line-numbers-mode -1)
+  (setq pdf-annot-activate-created-annotations t)
+  (setq pdf-view-resize-factor 1.1)))
+
 
 (use-package org-roam
   :straight (org-roam :type git :host github :repo "org-roam/org-roam")
@@ -1730,19 +1747,12 @@ See `org-capture-templates' for more information."
   :straight t
   :mode (("\\.re\\'" . review-mode)))
 (leaf csv-mode :straight t)
-(leaf pdf-tools
-  :straight t
-  ;; https://github.com/politza/pdf-tools#installation
-  :mode (("\\.pdf\\'" . pdf-view-mode))
-  :config
-  (pdf-tools-install)
-  (display-line-numbers-mode -1)
-  (setq pdf-annot-activate-created-annotations t)
-  (setq pdf-view-resize-factor 1.1))
+
 (leaf org-re-reveal
   :straight t
   :after org)
 (leaf org-gcal
+  :if (file-exists-p "~/Dropbox/org/googlecalendar/org-gcal-config.el")
   :straight t
   :after org
   :require t
