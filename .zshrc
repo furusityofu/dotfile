@@ -284,5 +284,6 @@ PATH=$HOME/.local/bin:$PATH
 
 typeset -U fpath
 autoload -U compinit
-compinit
+compinit -u
 typeset -U PATH
+
