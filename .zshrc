@@ -154,15 +154,15 @@ case ${MACVER} in
         ;;
 esac
 
-if [ -d /home/linuxbrew/ ];then
+if [ -d /home/linuxbrew ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
-if [ -d ~/.roswell/ ]
+if [ -d ~/.roswell ]
 then
     export PATH=~/.roswell/bin:$PATH
 fi
 if [ -d $HOME/go ]; then
-    export GOPATH=$HOME/go/
+    export GOPATH=$HOME/go
     PATH=$PATH:$GOPATH/bin
 fi
 #pyenv
