@@ -4,8 +4,6 @@ HOMEBREW_DIR_A="/opt/homebrew"
 HOMEBREW_DIR_I="/usr/local"
 MACPORTS_DIR_A="/opt/local"
 
-export MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH
-export INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH
 
 #alias
 
@@ -39,17 +37,6 @@ setopt correct
 #
 setopt list_packed
 
-#directory preview
-case "$TERM" in
-    xterm*|kterm*|rxvt*)
-        # PROMPT=$(print "%B%{\e[34m%}%m:%(5~,%-2~/.../%2~,%~)%{\e[33m%}%# %b")
-        # PROMPT=$(print "%{\e]2;%n@%m: %~\7%}$PROMPT") # title bar
-        ;;
-    *)
-        PROMPT='%m:%c%# '
-        ;;
-esac
-
 #disable lately command execution(統計のrとかぶる)
 disable r
 
@@ -80,11 +67,6 @@ TERM=xterm-256color
 echo $PATH|grep "opam"
 if [ $? -eq 1 ] ; then
 . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-fi
-
-# brew api token
-if [ -f ~/.homebrew_api_token ];then
-  source ~/.homebrew_api_token
 fi
 
 #right prompt
