@@ -1,5 +1,5 @@
 #macOSのバージョン番号
-MACVER=`sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+MACVER=`/usr/bin/sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
 HOMEBREW_DIR_A="/opt/homebrew"
 HOMEBREW_DIR_I="/usr/local"
 MACPORTS_DIR_A="/opt/local"
