@@ -117,7 +117,7 @@ fi
 
 # rust
 case ${MACVER} in
-    "11.0" )
+    11* )
         PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/bin:$PATH
         export RUST_SRC_PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/lib/rustlib/src/rust/src/
         ;;
@@ -222,7 +222,7 @@ case ${OSTYPE} in
                 export CPPFLAGS="-I/usr/local/opt/llvm/include"
                 export JAVA_HOME=`/usr/libexec/java_home`
                 ;;
-            "11.0")
+            11*)
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
                 export PROMPT="%n@%m(`uname -m`) %1~ %# "
                 alias intelbrew="PATH=$HOMEBREW_DIR_I/bin:/usr/bin:/bin:$HOMEBREW_DIR_I/sbin:/usr/sbin:/sbin arch --x86_64 $HOMEBREW_DIR_I/bin/brew"
