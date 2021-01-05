@@ -220,7 +220,7 @@ case ${OSTYPE} in
                 export PATH="/usr/local/opt/llvm/bin:$PATH"
                 export LDFLAGS="-L/usr/local/opt/llvm/lib"
                 export CPPFLAGS="-I/usr/local/opt/llvm/include"
-                export JAVA_HOME=`/usr/libexec/java_home`
+                export JAVA_HOME=`/usr/libexec/java_home -v 11`
                 ;;
             11*)
                 export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
@@ -229,6 +229,7 @@ case ${OSTYPE} in
                 alias armbrew="PATH=$HOMEBREW_DIR_A/bin:/usr/bin:/bin:$HOMEBREW_DIR_A/sbin:/usr/sbin:/sbin $HOMEBREW_DIR_A/bin/brew"
                 PATH=$MACPORTS_DIR_A/bin:$HOMEBREW_DIR_A/bin:$HOMEBREW_DIR_A/sbin:$PATH
                 alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
+                export JAVA_HOME=`/usr/libexec/java_home -v 11`
                 ;;
         esac
 	;;
