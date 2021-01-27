@@ -961,6 +961,7 @@
 
 
 (use-package org-journal
+  :disabled t
   :after org
   :commands org-journal-new-entry
   :custom

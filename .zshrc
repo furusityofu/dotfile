@@ -1,5 +1,5 @@
 #macOSのバージョン番号
-MACVER=`/usr/bin/sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
+MACVER="Linux"
 HOMEBREW_DIR_A="/opt/homebrew"
 HOMEBREW_DIR_I="/usr/local"
 MACPORTS_DIR_A="/opt/local"
@@ -255,7 +255,7 @@ case ${OSTYPE} in
         }
         export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
-        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
 esac
 if [ -d $HOME/.local/bin ]; then
@@ -270,3 +270,5 @@ autoload -U compinit
 compinit -u
 typeset -U PATH
 
+
+source $HOME/.poetry/env
