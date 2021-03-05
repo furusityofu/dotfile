@@ -227,6 +227,7 @@ case ${OSTYPE} in
                 export PROMPT="%n@%m(`uname -m`) %1~ %# "
                 alias intelbrew="PATH=$HOMEBREW_DIR_I/bin:/usr/bin:/bin:$HOMEBREW_DIR_I/sbin:/usr/sbin:/sbin arch --x86_64 $HOMEBREW_DIR_I/bin/brew"
                 alias armbrew="PATH=$HOMEBREW_DIR_A/bin:/usr/bin:/bin:$HOMEBREW_DIR_A/sbin:/usr/sbin:/sbin $HOMEBREW_DIR_A/bin/brew"
+                PATH=/opt/homebrew/lib/ruby/gems/3.0.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
                 PATH=$MACPORTS_DIR_A/bin:$HOMEBREW_DIR_A/bin:$HOMEBREW_DIR_A/sbin:$PATH
                 #alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
                 export JAVA_HOME=`/usr/libexec/java_home -v 11`
