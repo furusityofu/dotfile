@@ -1,8 +1,3 @@
-#macOSのバージョン番号
-MACVER=`/usr/bin/sw_vers -productVersion | awk -F. '{ print $1 "." $2 }'`
-HOMEBREW_DIR_A="/opt/homebrew"
-HOMEBREW_DIR_I="/usr/local"
-MACPORTS_DIR_A="/opt/local"
 
 
 #alias
@@ -91,9 +86,6 @@ if [ -f $HOME/.iterm2_shell_integration.zsh ];then
     source $HOME/.iterm2_shell_integration.zsh
 fi
 
-if [ -d $HOME/.composer/vendor/bin ];then
-    export PATH=$HOME/.composer/vendor/bin:$PATH
-fi
 
 if [ -f $HOME/.zshrc.local.zsh ];then
     source $HOME/.zshrc.local.zsh
@@ -115,61 +107,14 @@ if [ -d $HOME/.zfunc ];then
     fpath=($HOME/.zfunc $fpath)
 fi
 
-# rust
-case ${MACVER} in
-    11* )
-        PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/bin:$PATH
-        export RUST_SRC_PATH=$HOME/.rustup/toolchains/beta-aarch64-apple-darwin/lib/rustlib/src/rust/src/
-        ;;
-    * )
-        if [ -f $HOME/.cargo/env ];then
-            source $HOME/.cargo/env
-        fi
-
-        if [ -d $HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/ ];then
-            case ${OSTYPE} in
-                darwin*)
-                    export RUST_SRC_PATH=$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/
-                    ;;
-            esac
-        fi
-        ;;
-esac
+if [ -f $HOME/.poetry/env ];then
+    poetry config virtualenvs.in-project true
+fi
 
 if [ -d /home/linuxbrew ];then
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
-if [ -d ~/.roswell ]
-then
-    export PATH=~/.roswell/bin:$PATH
-fi
-if [ -d $HOME/go ]; then
-    export GOPATH=$HOME/go
-    PATH=$PATH:$GOPATH/bin
-fi
-#pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
 
-# pipenv
-export PIPENV_VENV_IN_PROJECT=1
-
-# poetry
-# https://github.com/python-poetry/poetry
-# curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-if [ -f $HOME/.poetry/env ];then
-    source $HOME/.poetry/env
-    poetry config virtualenvs.in-project true
-fi
-
-# for wsl
-if [ -f  /mnt/c/Windows/System32/wsl.exe ]; then
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
-    export GDK_SCALE=2
-fi
 
 # PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 # PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -181,11 +126,6 @@ fi
 
 
 if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-# git-remind
-export GIT_REMIND_PATHS=$HOME/git/*
-export EDITOR=emacs
-alias e='emacsclient -nw -a ""'
-alias ekill='emacsclient -e "(kill-emacs)"'
 
 #OS固有の設定
 case ${OSTYPE} in
@@ -204,30 +144,16 @@ case ${OSTYPE} in
         case $MACVER in
             "10.14" | "10.15")
 	        alias brew="PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
-                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
-                export PATH="/usr/local/opt/llvm/bin:$PATH"
-                export LDFLAGS="-L/usr/local/opt/llvm/lib"
-                export CPPFLAGS="-I/usr/local/opt/llvm/include"
-                export JAVA_HOME=`/usr/libexec/java_home -v 11`
                 ;;
             11*)
-                export SDKROOT="$(xcrun --sdk macosx --show-sdk-path)"
-                export PROMPT="%n@%m(`uname -m`) %1~ %# "
                 alias intelbrew="PATH=$HOMEBREW_DIR_I/bin:/usr/bin:/bin:$HOMEBREW_DIR_I/sbin:/usr/sbin:/sbin arch --x86_64 $HOMEBREW_DIR_I/bin/brew"
                 alias armbrew="PATH=$HOMEBREW_DIR_A/bin:/usr/bin:/bin:$HOMEBREW_DIR_A/sbin:/usr/sbin:/sbin $HOMEBREW_DIR_A/bin/brew"
-                PATH=/opt/homebrew/lib/ruby/gems/3.0.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
-                PATH=$HOMEBREW_DIR_A/bin:$MACPORTS_DIR_A/bin:$HOMEBREW_DIR_A/sbin:$PATH
-                #alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
-                export JAVA_HOME=`/usr/libexec/java_home -v 11`
                 ;;
         esac
 	;;
     linux*)
 	alias ls='ls --color'
         alias ll='exa -l'
-	if grep '^fbterm' /proc/$PPID/cmdline > /dev/null; then
-	    export TERM=fbterm
-	fi
 	alias fbterm='env LANG=ja_JP.UTF8 fbterm'
         alias pacman-rm='pacman -R'
         alias pacman-rm-and-deps='pacman -Rs'
@@ -239,19 +165,10 @@ case ${OSTYPE} in
         alias pacman-downloadonly='pacman -Sw'
         alias pacman-refresh-file-database='pacman -Fy'
         alias pacman-list-installed='pacman -Qe'
-        function find_cd() {
-            cd "$(find . -type d | peco)"
-        }
-        export PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.local/bin
         fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
         source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 	;;
 esac
-if [ -d $HOME/.local/bin ]; then
-else
-    mkdir -p $HOME/.local/bin
-fi
-PATH=$HOME/.local/bin:$PATH
 
 
 typeset -U fpath
