@@ -90,7 +90,7 @@ case ${OSTYPE} in
                 PATH=/opt/homebrew/lib/ruby/gems/3.0.0/bin:/opt/homebrew/opt/ruby/bin:$PATH
                 PATH=$HOMEBREW_DIR_A/bin:$MACPORTS_DIR_A/bin:$HOMEBREW_DIR_A/sbin:$PATH
                 #alias emacs="/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs"
-                export JAVA_HOME=`/usr/libexec/java_home -v 11`
+                export JAVA_HOME=~/Library/Java/JavaVirtualMachines/azul-11.0.9.1/Contents/Home
                 ;;
         esac
 	;;
