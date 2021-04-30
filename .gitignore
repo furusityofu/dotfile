@@ -65,3 +65,4 @@ flycheck_*.el
 /.emacs.d/lisp/picasm/
 /.emacs.d/straight/modified/
 /.config/git/config.local
+/.config/nvim/plugged/
