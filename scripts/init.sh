@@ -3,6 +3,7 @@ cd `dirname $0`                 # ファイルのある場所をカレントデ�
 ln -s $PWD/../.editorconfig $HOME/
 ln -s $PWD/../.zshrc $HOME/
 ln -s $PWD/../.zprofile $HOME/
+ln -s $PWD/../.rgignore $HOME/
 ln -s $PWD/../.gnupg/gpg.conf $HOME/.gnupg/
 ln -s $PWD/../.gnupg/gpg-agent.conf $HOME/.gnupg/
 touch $HOME/.zshrc.local.zsh
